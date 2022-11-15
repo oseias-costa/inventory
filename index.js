@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require("express");
-const { default: mongoose } = require('mongoose');
-const mogoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const app = express();
 const category = require('./routes/category')
