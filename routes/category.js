@@ -10,13 +10,9 @@ const {
 const router = express.Router()
 
 router.get('/', getAllCategories)
-
 router.get('/:id', getCategory)
-
 router.post('/', createCategory)
-
 router.delete('/:id', deleteCategory)
-
 router.patch('/:id', updateCategory)
 
 

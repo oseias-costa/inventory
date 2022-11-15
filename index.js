@@ -4,11 +4,13 @@ const mongoose = require('mongoose')
 
 const app = express();
 const category = require('./routes/category')
+const subcategory = require('./routes/subcategory')
 
 app.use(express.json({ extended: false }));
 
 //routes
 app.use('/api/category', category);
+app.use('/api/subcategory', subcategory);
 
 //conect to db
 mongoose.connect(process.env.MONGO_URI)
