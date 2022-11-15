@@ -64,8 +64,6 @@ const updateCategory = async (req, res) => {
     res.status(200).json(category)
 }
 
-
-
 module.exports = {
     createCategory,
     getAllCategories,
