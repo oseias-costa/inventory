@@ -1,10 +1,12 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
-const product = require("./api/product");
+const category = require('./routes/category')
 
 app.use(express.json({ extended: false }));
 
-app.use("/api/product", product);
+//routes
+app.use('/api/category', category);
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+
+app.listen(process.env.PORT, () => console.log(`Server is running in port ${process.env.PORT}`));
