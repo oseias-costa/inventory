@@ -1,26 +1,23 @@
 const express = require('express')
+const { 
+    createCategory, 
+    getAllCategories, 
+    getCategory,
+    deleteCategory,
+    updateCategory 
+    } = require('../controllers/categoryControllers')
 
 const router = express.Router()
 
-router.get('/', (req,res) => {
-    res.json({msg: 'Get all works'})
-})
+router.get('/', getAllCategories)
 
-router.get('/:id', (req,res) => {
-    res.json({msg: 'Get a single category'})
-})
+router.get('/:id', getCategory)
 
-router.post('/', (req, res) => {
-    res.json({msg: 'Post a category'})
-})
+router.post('/', createCategory)
 
-router.delete('/:id', (req,res) => {
-    res.json({msg: 'Delete a category'})
-})
+router.delete('/:id', deleteCategory)
 
-router.patch('/:id', (req, res) => {
-    res.json({msg: 'Update a category'})
-})
+router.patch('/:id', updateCategory)
 
 
 
