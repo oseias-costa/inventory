@@ -17,6 +17,6 @@ const productSchema = new Schema({
         ref: 'Category',
         required: true
     }
-})
+},{timestamps: true})
 
 module.exports = mongoose.model('Product', productSchema)

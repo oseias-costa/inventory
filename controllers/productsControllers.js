@@ -61,7 +61,7 @@ const updateProduct = async (req, res) => {
     if(!product){
         return res.status(404).json({error: 'No such category'})
     }
-    res.status(200).json(product)
+    res.status(200).json({_id: id, ...req.body, updatedAt: new Date()})
 }
 
 module.exports = {

@@ -8,7 +8,7 @@ const categorySchema = new Schema({
         require: true
     }
 
-}
+},{timestamps: true}
 // ,{timestamps: true}
 )
 
