@@ -5,12 +5,14 @@ const mongoose = require('mongoose')
 const app = express();
 const category = require('./routes/category')
 const subcategory = require('./routes/subcategory')
+const products = require('./routes/products')
 
 app.use(express.json({ extended: false }));
 
 //routes
 app.use('/api/category', category);
 app.use('/api/subcategory', subcategory);
+app.use('/api/product', products);
 
 //conect to db
 mongoose.connect(process.env.MONGO_URI)
