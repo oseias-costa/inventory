@@ -56,7 +56,7 @@ const updateSubcategory = async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({erro: 'No such category'})
     }
-    const subCategory = await Category.findByIdAndUpdate({_id: id},{
+    const subCategory = await Subcategory.findByIdAndUpdate({_id: id},{
         ...req.body
     })
     if(!subCategory){
