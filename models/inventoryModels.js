@@ -27,9 +27,11 @@ const inventorySchema = new Schema({
         type: Number,
         required: true
     },
-    total: {
+    size: {
         type: Number,
-        required: true
+    },
+    color: {
+        type: String,
     }
 },{timestamps: true})
 

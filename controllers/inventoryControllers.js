@@ -3,22 +3,16 @@ const mongoose = require('mongoose')
 
 const createItemInventory = async (req, res) => {
     try{
-        const { product, 
-                category, 
-                subcategory,
-                amount,
-                costPrice,
-                salePrice,
-                total } = req.body
+        const { product, category, subcategory,
+                amount, costPrice, salePrice,
+                size, color } = req.body
+
         const inventoryItemBody = await Inventory.create({
-            product, 
-            category, 
-            subcategory,
-            amount,
-            costPrice,
-            salePrice,
-            total
+            product, category, subcategory,
+            amount, costPrice, salePrice,
+            size, color
         })
+
         res.status(200).json(inventoryItemBody)
     } catch (err){
         res.status(400).json({error: error.message})
