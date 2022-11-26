@@ -1,4 +1,4 @@
-const Movement = require('../models/inventoryModels')
+const Movement = require('../models/stockMovementModels')
 const mongoose = require('mongoose')
 
 const createStockMovement = async (req, res) => {
