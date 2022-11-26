@@ -8,16 +8,17 @@ const category = require('./routes/category')
 const subcategory = require('./routes/subcategory')
 const products = require('./routes/products')
 const inventory = require('./routes/inventory')
+const stockMovement = require('./routes/stockMovement')
 
 app.use(express.json({ extended: false }));
 
-//routes
 app.use('/api/category', category);
 app.use('/api/subcategory', subcategory);
 app.use('/api/product', products);
 app.use('/api/inventory', inventory);
+app.use('/api/movement', stockMovement);
 
-//conect to db
+
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(process.env.PORT, () => {
