@@ -5,12 +5,12 @@ const createItemInventory = async (req, res) => {
     try{
         const { product, category, subcategory,
                 amount, costPrice, salePrice,
-                size, color } = req.body
+                size, color, total } = req.body
 
         const inventoryItemBody = await Inventory.create({
             product, category, subcategory,
             amount, costPrice, salePrice,
-            size, color
+            size, color, total
         })
 
         res.status(200).json(inventoryItemBody)

@@ -32,6 +32,9 @@ const inventorySchema = new Schema({
     },
     color: {
         type: String,
+    },
+    total: {
+        type: String,
     }
 },{timestamps: true})
 
