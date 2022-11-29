@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 
 const app = express();
 
+const auth = require('./routes/auth')
+const user = require('./routes/user')
 const category = require('./routes/category')
 const subcategory = require('./routes/subcategory')
 const products = require('./routes/products')
@@ -12,6 +14,8 @@ const stockMovement = require('./routes/stockMovement')
 
 app.use(express.json({ extended: false }));
 
+app.use('/auth', auth);
+app.use('/api/user', user);
 app.use('/api/category', category);
 app.use('/api/subcategory', subcategory);
 app.use('/api/product', products);
