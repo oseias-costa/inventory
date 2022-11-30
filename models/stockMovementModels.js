@@ -38,6 +38,9 @@ const movementSchema = new Schema({
     },
     description: {
         type: String,
+    },
+    total: {
+        type: String,
     }
 },{timestamps: true})
 

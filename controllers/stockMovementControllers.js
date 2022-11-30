@@ -5,12 +5,12 @@ const createStockMovement = async (req, res) => {
     try{
         const { product, category, subcategory,
                 amount, costPrice, salePrice,
-                size, color, date, type, description } = req.body
+                size, color, date, type, description, total } = req.body
 
         const movementItemBody = await Movement.create({
             product, category, subcategory,
             amount, costPrice, salePrice,
-            size, color, date, type, description
+            size, color, date, type, description, total
         })
 
         res.status(200).json(movementItemBody)
