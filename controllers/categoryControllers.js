@@ -7,7 +7,7 @@ const createCategory = async (req, res) => {
         const category = await Category.create({categoryName})
         res.status(200).json(category)
     } catch (err){
-        res.status(400).json({error: error.message})
+        res.status(400).json({error: err.message})
     }
 }
 
