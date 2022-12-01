@@ -39,6 +39,7 @@ const authMiddleware = (req, res, next) => {
                 return res.status(404).json({error: 'No such category'})
             }
     
+            console.log('USERRR: ', decoded.id)
             req.userId = user
             return next()
         })
