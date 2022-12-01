@@ -2,6 +2,7 @@ const Inventory = require('../models/inventoryModels')
 const mongoose = require('mongoose')
 
 const createItemInventory = async (req, res) => {
+    const userId = req.userId
     try{
         const { product, category, subcategory,
                 amount, costPrice, salePrice,
@@ -10,7 +11,7 @@ const createItemInventory = async (req, res) => {
         const inventoryItemBody = await Inventory.create({
             product, category, subcategory,
             amount, costPrice, salePrice,
-            size, color, total
+            size, color, total, user: userId
         })
 
         res.status(200).json(inventoryItemBody)
@@ -20,8 +21,9 @@ const createItemInventory = async (req, res) => {
 }
 
 const getAllIventory = async (req, res) => {
+    const userId = req.userId
     try{
-        const inventory = await Inventory.find({}).sort({createdAt: - 1})
+        const inventory = await Inventory.find({user: userId}).sort({createdAt: - 1})
         res.status(200).json(inventory)
     } catch (err) {
         res.status(400).json({error: "Error for getAll"})

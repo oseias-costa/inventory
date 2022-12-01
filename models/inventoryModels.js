@@ -35,6 +35,10 @@ const inventorySchema = new Schema({
     },
     total: {
         type: String,
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
     }
 },{timestamps: true})
 

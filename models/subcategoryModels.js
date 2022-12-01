@@ -10,6 +10,10 @@ const subcategorySchema = new Schema({
     category: {
         type: String,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
     }
 
 },{timestamps: true})

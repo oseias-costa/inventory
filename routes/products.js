@@ -6,12 +6,13 @@ const {
     deleteProduct,
     updateProduct
     } = require('../controllers/productsControllers')
+const { authMiddleware } = require('../middleware/authModdleware')
 
 const router = express.Router()
 
-router.get('/', getAllProducts)
+router.get('/', authMiddleware, getAllProducts)
 router.get('/:id', getProduct)
-router.post('/', createProduct)
+router.post('/', authMiddleware, createProduct)
 router.delete('/:id', deleteProduct)
 router.patch('/:id', updateProduct)
 

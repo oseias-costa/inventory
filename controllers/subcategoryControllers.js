@@ -2,9 +2,11 @@ const Subcategory = require('../models/subcategoryModels')
 const mongoose = require('mongoose')
 
 const createSubcategory = async (req, res) => {
+    const userId = req.userId
     try{
         const { subcategory, category } = req.body
-        const subCategory = await Subcategory.create({ subcategory, category})
+        const subCategory = await Subcategory.create({ 
+            subcategory, category, user: userId})
         res.status(200).json(subCategory)
     } catch (err){
         res.status(400).json({error: err.message})
@@ -12,8 +14,12 @@ const createSubcategory = async (req, res) => {
 }
 
 const getAllSubcategories = async (req, res) => {
+    const userId = req.userId
     try{
-        const subCategory = await Subcategory.find({}).populate('category').sort({createdAt: - 1})
+        const subCategory = await Subcategory.find({user: userId})
+        .populate('category')
+        .sort({createdAt: - 1})
+        
         res.status(200).json(subCategory)
     } catch (err) {
         res.status(400).json({error: "Error for getAll"})

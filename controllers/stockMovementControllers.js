@@ -2,6 +2,7 @@ const Movement = require('../models/stockMovementModels')
 const mongoose = require('mongoose')
 
 const createStockMovement = async (req, res) => {
+    const userId = req.userId
     try{
         const { product, category, subcategory,
                 amount, costPrice, salePrice,
@@ -10,7 +11,7 @@ const createStockMovement = async (req, res) => {
         const movementItemBody = await Movement.create({
             product, category, subcategory,
             amount, costPrice, salePrice,
-            size, color, date, type, description, total
+            size, color, date, type, description, total, user: userId
         })
 
         res.status(200).json(movementItemBody)
@@ -20,8 +21,9 @@ const createStockMovement = async (req, res) => {
 }
 
 const getAllStockMovement = async (req, res) => {
+    const userId = req.userId
     try{
-        const movement = await Movement.find({}).sort({createdAt: - 1})
+        const movement = await Movement.find({user: userId}).sort({createdAt: - 1})
         res.status(200).json(movement)
     } catch (err) {
         res.status(400).json({error: "Error for getAll"})

@@ -6,6 +6,10 @@ const categorySchema = new Schema({
     categoryName: {
         type: String,
         require: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
     }
 
 },{timestamps: true}

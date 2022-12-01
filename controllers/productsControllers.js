@@ -3,17 +3,21 @@ const mongoose = require('mongoose')
 
 const createProduct = async (req, res) => {
     try{
+        const userId = req.userId
         const { product, category, subcategory } = req.body
-        const productBody = await Product.create({product, category, subcategory})
+        const productBody = await Product.create({
+            product, category, subcategory, user: userId
+        })
         res.status(200).json(productBody)
     } catch (err){
-        res.status(400).json({error: error.message})
+        res.status(400).json({error: err.message})
     }
 }
 
 const getAllProducts = async (req, res) => {
     try{
-        const products = await Product.find({}).sort({createdAt: - 1})
+        const userId = req.userId
+        const products = await Product.find({user: userId}).sort({createdAt: - 1})
         res.status(200).json(products)
     } catch (err) {
         res.status(400).json({error: "Error for getAll"})
